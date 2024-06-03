@@ -34,54 +34,64 @@
     <!-- css -->
     <link rel="stylesheet" href="css/style.css" />
     <!-- javascript -->
-    <script src="src/main.js" defer></script>
-    <script src="src/scroll.js" defer></script>
-    <script src="src/modal.js" defer></script>
+    <script type="module" src="src/main.js" defer></script>
+    <script type="module" src="src/scroll.js" defer></script>
+    <script type="module" src="src/modal.js" defer></script>
+    <script type="module" src="src/projects.js" defer></script>
+    <script type="module" src="src/map.js" defer></script>
   </head>
   <body>
     <!-- Header -->
     <header class="header">
       <div class="header_logo">
         <img class="header_logo_img" src="images/favicon.ico" alt="logo" />
-        <h1 class="header_log_title"><a href="#">HOTEL CASADAY</a></h1>
+        <h1 class="header_logo_title"><a href="#">HOTEL CASADAY</a></h1>
       </div>
-      <nav>
+      <nav class="nav_container">
         <ul class="header_menu">
-          <li><a class="header_menu_item active" href="#home">Home</a></li>
+          <li><a class="header_menu_item" href="#home">Home</a></li>
           <li><a class="header_menu_item" href="#about">About</a></li>
-          <li><a class="header_menu_item" href="#skills">Skills</a></li>
-          <li><a class="header_menu_item" href="#work">Work</a></li>
+          <li><a class="header_menu_item" href="#rooms">Skills</a></li>
+          <li><a class="header_menu_item" href="#location">Work</a></li>
           <li>
-            <a class="header_menu_item" href="#testimonials">Testimonials</a>
+            <a class="header_menu_item" href="#guest">Testimonials</a>
           </li>
           <li><a class="header_menu_item" href="#contact">Contact</a></li>
         </ul>
       </nav>
+      <button class="toggle_bar" aria-label="navation menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
     </header>
     <!-- Main -->
     <main>
       <!-- home -->
       <section id="home">
-        <div class='home_container'>
+        <div class="home_container">
           <img class="home_avatar" src="images/profile.png" alt="profile" />
-        <h2 class="home_title">
-          WELCOME TO <strong class="home_title_strong">CASADAY</strong>
-        </h2>
-        <p class="home_description" style="color: rgba(245, 245, 245, 0.649)">
-          "Thank you sincerely for visiting the CASADAY HOTEL."
-        </p>
-        <a class="home_contact" href="#contact">Contact Me</a>
+          <h2 class="home_title">
+            WELCOME TO <strong class="home_title_strong">CASADAY</strong>
+          </h2>
+          <p class="home_description" style="color: rgba(245, 245, 245, 0.649)">
+            "Thank you sincerely for visiting the CASADAY HOTEL."
+          </p>
+          <a class="home_contact" href="#contact">Contact Me</a>
         </div>
       </section>
       <!-- about -->
       <section id="about" class="section">
         <div class="max_container">
           <h2 class="title">ABOUT...</h2>
+
           <p class="description">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi
-            deserunt facilis doloribus, quo assumenda quas reiciendis illum
-            atque ducimus. Itaque assumenda amet, harum nobis sint possimus
-            earum laborum voluptate molestiae?
+            Welcome to CASADAY! We are delighted to have you with us. Our hotel
+            offers a variety of rooms tailored to meet your specific needs,
+            including multimedia rooms where you can connect your laptop or
+            smartphone to the TV and enjoy your own videos, Styler rooms
+            equipped with LG Styler for cleaning your clothes, and PC rooms
+            where guests can enjoy a wide range of games, perfect for couples
+            who want to play online games together. Choose the perfect room to
+            enhance your stay with us.
           </p>
           <ul class="majors">
             <li class="major">
@@ -107,58 +117,84 @@
               <p>"I Code, Therefore I Am."</p>
             </li>
           </ul>
-          <ul class="jobs">
-            <li class="job">
-              <img src="images/jobs/google.png" alt="google logo" />
-              <div>
-                <p class="job_name">Google as Senior Software Engineer</p>
-                <p class="job_period">2023. Oct - until now</p>
+          <ul class="services">
+            <li class="service">
+              <div class="service_icon">
+                <i class="fa-solid fa-wifi"></i>
+              </div>
+              <div class="service_info">
+                <p class="service_name">Free Wi-Fi</p>
               </div>
             </li>
-            <li class="job">
-              <img src="images/jobs/samsung.png" alt="samsung logo" />
-              <div>
-                <p class="job_name">Samsung as Senior Hardware Engineer</p>
-                <p class="job_period">2011. Nov - until now</p>
+            <li class="service">
+              <div class="service_icon">
+                <i class="fa-solid fa-utensils"></i>
+              </div>
+              <div class="service_info">
+                <p class="service_name">Complimentary Breakfast</p>
+              </div>
+            </li>
+            <li class="service">
+              <div class="service_icon">
+                <i class="fa-solid fa-video"></i>
+              </div>
+              <div class="service_info">
+                <p class="service_name">Media Facilities</p>
+              </div>
+            </li>
+            <li class="service">
+              <div class="service_icon">
+                <i class="fa-solid fa-swimming-pool"></i>
+              </div>
+              <div class="service_info">
+                <p class="service_name">Swimming Pool</p>
+              </div>
+            </li>
+            <li class="service">
+              <div class="service_icon">
+                <i class="fa-solid fa-spa"></i>
+              </div>
+              <div class="service_info">
+                <p class="service_name">Spa Services</p>
               </div>
             </li>
           </ul>
         </div>
       </section>
-      <!-- Work -->
-      <section id="work" class="section">
+      <!-- Rooms -->
+      <section id="rooms" class="section">
         <div class="max_container">
           <h2 class="title">ROOMS INFORMATION</h2>
-          <p class="description">Projects</p>
+          <p class="description">TYPE</p>
           <ul class="categories">
             <li>
               <button class="category">
-                Rooms <span class="category_count">55</span>
+                Premium Double <span class="category_count">20</span>
               </button>
             </li>
             <li>
               <button class="category">
-                Front <span class="category_count">1</span>
+                Executive Double <span class="category_count">20</span>
               </button>
             </li>
             <li>
               <button class="category">
-                Cafeteria <span class="category_count">delicious</span>
+                Deluxe Twin <span class="category_count">6</span>
               </button>
             </li>
             <li>
               <button class="category">
-                Amenity <span class="category_count">good</span>
+                Suite Room <span class="category_count">3</span>
               </button>
             </li>
             <li>
               <button class="category">
-                Laundry <span class="category_count">1</span>
+                Standard Double <span class="category_count">5</span>
               </button>
             </li>
             <li>
               <button class="category">
-                Parking <span class="category_count">2</span>
+                Cafeteria <span class="category_count">1</span>
               </button>
             </li>
           </ul>
@@ -341,10 +377,12 @@
         <img class="modal_content" id="modal_img" />
       </div>
 
-      <section id="locations" class="section">
+      <section id="location" class="section">
         <div class="max_container">
-          <h2 class="title">Where is ...</h2>
-          <p class="description">"아래 주소를 클릭해 주세요."</p>
+          <h2 class="title">Where is ...호텔</h2>
+          <p class="description" style="color: slategrey">
+            <strong>"아래 주소를 클릭하시면 네비게이션이 열립니다."</strong>
+          </p>
           <br />
           <div class="address">
             <iframe
@@ -356,7 +394,7 @@
             </iframe>
           </div>
           <ul class="address">
-            <li>
+            <li class="nav" title="click Address!!">
               <p
                 class="address_icon"
                 data-lat="35.2224099"
@@ -367,7 +405,7 @@
                 경상남도 창원시 성산구 마디미로15번길 6 - '호텔 카사데이'
               </p>
             </li>
-            <li>
+            <li class="nav" title="click Address!!">
               <p
                 class="address_icon"
                 data-lat="35.2224099"
@@ -383,75 +421,11 @@
         </div>
       </section>
 
-      <!-- The Modal -->
-      <div id="myModal" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <p id="modalAddress"></p>
-          <a id="googleMapLink" href="#" target="_blank"
-            >Google Maps로 네비게이션 실행</a
-          >
-        </div>
-      </div>
-
-      <script>
-        document.querySelectorAll('.address_icon').forEach((item) => {
-          item.addEventListener('click', (event) => {
-            const lat = item.getAttribute('data-lat');
-            const lng = item.getAttribute('data-lng');
-            const address = item.getAttribute('data-address');
-
-            // Geolocation API를 사용하여 사용자의 현재 위치를 가져옵니다.
-            if (navigator.geolocation) {
-              navigator.geolocation.getCurrentPosition(
-                (position) => {
-                  ㅜㅗㅕㅛ;
-                  const currentLat = position.coords.latitude;
-                  const currentLng = position.coords.longitude;
-                  const googleMapUrl = `https://www.google.com/maps/dir/?api=1&origin=${currentLat},${currentLng}&destination=${lat},${lng}&travelmode=driving`;
-
-                  // Update modal content
-                  document.getElementById('modalAddress').textContent = address;
-                  document.getElementById('googleMapLink').href = googleMapUrl;
-
-                  // Show the modal
-                  const modal = document.getElementById('myModal');
-                  modal.style.display = 'block';
-                },
-                () => {
-                  alert('현재 위치를 가져올 수 없습니다.');
-                }
-              );
-            } else {
-              alert('Geolocation을 지원하지 않는 브라우저입니다.');
-            }
-          });
-        });
-
-        // Get the modal
-        const modal = document.getElementById('myModal');
-
-        // Get the <span> element that closes the modal
-        const span = document.getElementsByClassName('close')[0];
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function () {
-          modal.style.display = 'none';
-        };
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-          if (event.target == modal) {
-            modal.style.display = 'none';
-          }
-        };
-      </script>
-
       <!-- Testimonials -->
-      <section id="testimonials" class="section">
+      <section id="guest" class="section">
         <div class="max_container">
-          <h2 class="title">Testimonial</h2>
-          <p class="description">See What they say about me</p>
+          <h2 class="title">Guest Testimonials</h2>
+          <p class="description">Hear What Our Guests Have to Say</p>
           <ul class="testimonials">
             <li class="testimonial">
               <img
@@ -461,14 +435,15 @@
               />
               <div class="testimonial_bubble">
                 <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt
-                  autem, a totam possimus quam culpa obcaecati praesentium odit
-                  labore accusamus id fugiat error? Quam voluptates, consequatur
-                  ea ullam nisi adipisci!
+                  "I've been staying at Casadei Hotel for my business trips and
+                  absolutely love the convenience of the self-service laundry
+                  facilities. It's perfect for long-term stays."
                 </p>
                 <p>
-                  <a href="#" class="testimonial_bubble_name">James Kim</a>
-                  /Google
+                  <a href="#" class="testimonial_bubble_name"
+                    >Michael Johnson</a
+                  >
+                  /Frequent Business Traveler
                 </p>
               </div>
             </li>
@@ -480,14 +455,12 @@
               />
               <div class="testimonial_bubble">
                 <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt
-                  autem, a totam possimus quam culpa obcaecati praesentium odit
-                  labore accusamus id fugiat error? Quam voluptates, consequatur
-                  ea ullam nisi adipisci!
+                  "Casadei Hotel makes my mornings delightful with their
+                  complimentary breakfast. It's a great way to start the day!"
                 </p>
                 <p>
-                  <a href="#" class="testimonial_bubble_name">Lee TaeGyu</a>
-                  /Samsung
+                  <a href="#" class="testimonial_bubble_name">TG Lee</a>
+                  /Leisure Guest
                 </p>
               </div>
             </li>
@@ -499,14 +472,13 @@
               />
               <div class="testimonial_bubble">
                 <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt
-                  autem, a totam possimus quam culpa obcaecati praesentium odit
-                  labore accusamus id fugiat error? Quam voluptates, consequatur
-                  ea ullam nisi adipisci!
+                  "Staying connected is crucial for my work, and the free Wi-Fi
+                  in every room at Casadei Hotel is fast and reliable. I
+                  couldn't ask for a better place to stay."
                 </p>
                 <p>
-                  <a href="#" class="testimonial_bubble_name">Anna Jin</a>
-                  /Google
+                  <a href="#" class="testimonial_bubble_name">Sara Kim </a>
+                  /Digital Nomad
                 </p>
               </div>
             </li>
@@ -520,7 +492,6 @@
         ><i class="fa-solid fa-angles-up"></i
       ></a>
     </aside>
-
     <!-- Footer -->
     <footer id="contact" class="section">
       <div class="max_container">
