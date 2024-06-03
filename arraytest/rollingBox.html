@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transform</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+    .box {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      background-color: brown;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: all 0.3s ease, border-radius 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .large-box {
+      font-size: 16px;
+      box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+      border: 2px solid #ccc;
+      background: linear-gradient(145deg, #6e6e6e, #8e8e8e);
+    }
+    @keyframes blink-red {
+      0% { background-color: red; }
+      50% { background-color: transparent; }
+      100% { background-color: red; }
+    }
+    @keyframes blink-green {
+      0% { background-color: green; }
+      50% { background-color: transparent; }
+      100% { background-color: green; }
+    }
+    #winner {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 32px;
+      font-weight: bold;
+      color: gold;
+      background-color: black;
+      padding: 20px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="winner">Winner</div>
+  <audio id="grow-sound" src="grow.mp3"></audio>
+  <audio id="shrink-sound" src="shrink.mp3"></audio>
+  <script>
+    const boxSize = 50;
+    const shrinkInterval = 10000; // 10 seconds
+    const spawnInterval = 3000; // 3 seconds
+    const growSound = document.getElementById('grow-sound');
+    const shrinkSound = document.getElementById('shrink-sound');
+
+    function randomColor() {
+      const letters = '0123456789ABCDEF';
+      let color = '#';
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+
+    function random(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    function detectCollision(element1, element2) {
+      const rect1 = element1.getBoundingClientRect();
+      const rect2 = element2.getBoundingClientRect();
+      return !(rect1.right < rect2.left || rect1.left > rect2.right || rect1.bottom < rect2.top || rect1.top > rect2.bottom);
+    }
+
+    function updateLevel(element, newSize) {
+      const level = Math.floor(newSize / boxSize);
+      element.querySelector('.level').innerText = `${level}_lvl`;
+    }
+
+    function createBoxAnimation(element) {
+      let directionX = random(-5, 5);
+      let directionY = random(-5, 5);
+      element.style.backgroundColor = randomColor();
+      element.lastEatTime = Date.now();
+
+      const boxAnimation = () => {
+        let x = parseFloat(element.style.left || 0);
+        let y = parseFloat(element.style.top || 0);
+
+        x += directionX;
+        y += directionY;
+
+        if (x <= 0 || x >= window.innerWidth - element.offsetWidth) {
+          directionX = -directionX;
+          directionX += random(-1, 1); // 반사될 때 속도 변경
+          element.style.backgroundColor = randomColor();
+        }
+        if (y <= 0 || y >= window.innerHeight - element.offsetHeight) {
+          directionY = -directionY;
+          directionY += random(-1, 1); // 반사될 때 속도 변경
+          element.style.backgroundColor = randomColor();
+        }
+
+        element.style.left = `${x}px`;
+        element.style.top = `${y}px`;
+
+        const now = Date.now();
+        if (now - element.lastEatTime > shrinkInterval) {
+          element.lastEatTime = now;
+          if (element.offsetWidth > boxSize) {
+            shrinkSound.play();
+            element.style.width = `${element.offsetWidth / 2}px`;
+            element.style.height = `${element.offsetHeight / 2}px`;
+            if (element.querySelector('.level')) {
+              element.style.fontSize = `${parseFloat(element.style.fontSize) / 2}px`;
+            }
+            updateLevel(element, element.offsetWidth);
+          }
+        }
+
+        document.querySelectorAll('.box').forEach(otherElement => {
+          if (otherElement !== element && detectCollision(element, otherElement)) {
+            if (element.querySelector('.level') && !otherElement.querySelector('.level')) {
+              const percentage = parseFloat(otherElement.innerText);
+              const newSize = Math.max(element.offsetWidth + element.offsetWidth * (percentage / 100), boxSize);
+              element.style.width = `${newSize}px`;
+              element.style.height = `${newSize}px`;
+              element.style.fontSize = `${parseFloat(element.style.fontSize) * (newSize / element.offsetWidth)}px`;
+              updateLevel(element, newSize);
+              otherElement.remove();
+              element.lastEatTime = Date.now();
+              growSound.play();
+            } else if (element.querySelector('.level') && otherElement.querySelector('.level')) {
+              if (element.offsetWidth >= otherElement.offsetWidth * 3) {
+                const newSize = element.offsetWidth + otherElement.offsetWidth;
+                element.style.width = `${newSize}px`;
+                element.style.height = `${newSize}px`;
+                element.style.fontSize = `${parseFloat(element.style.fontSize) * (newSize / element.offsetWidth)}px`;
+                updateLevel(element, newSize);
+                otherElement.remove();
+                element.lastEatTime = Date.now();
+                growSound.play();
+              } else {
+                const newSizeElement = Math.max(element.offsetWidth * 0.1, boxSize);
+                const newSizeOther = Math.max(otherElement.offsetWidth * 0.1, boxSize);
+                element.style.width = `${newSizeElement}px`;
+                element.style.height = `${newSizeElement}px`;
+                element.style.fontSize = `${parseFloat(element.style.fontSize) * 0.1}px`;
+                updateLevel(element, newSizeElement);
+                otherElement.style.width = `${newSizeOther}px`;
+                otherElement.style.height = `${newSizeOther}px`;
+                otherElement.style.fontSize = `${parseFloat(otherElement.style.fontSize) * 0.1}px`;
+                updateLevel(otherElement, newSizeOther);
+                shrinkSound.play();
+              }
+            }
+          }
+        });
+
+        element.animationId = requestAnimationFrame(boxAnimation);
+      };
+
+      element.animationId = requestAnimationFrame(boxAnimation);
+    }
+
+    function toggleAnimation(element) {
+      if (element.classList.contains('animate')) {
+        element.classList.remove('animate');
+        cancelAnimationFrame(element.animationId);
+      } else {
+        element.classList.add('animate');
+        createBoxAnimation(element);
+      }
+    }
+
+    function createNewBox() {
+      const box = document.createElement('div');
+      box.classList.add('box');
+      box.style.left = `${random(0, window.innerWidth - boxSize)}px`;
+      box.style.top = `${random(0, window.innerHeight - boxSize)}px`;
+      box.innerHTML = `<span>${(Math.random() * 150 - 50).toFixed(2)}%</span>`;
+      document.body.appendChild(box);
+      toggleAnimation(box);
+    }
+
+    // 초기 박스 15개 생성
+    for (let i = 0; i < 15; i++) {
+      const box = document.createElement('div');
+      box.classList.add('box');
+      if (i < 3) {
+        box.innerHTML = `<span>${String.fromCharCode(65 + i)}</span><span class="level">1lvl</span>`;
+        box.classList.add('large-box');
+      } else {
+        box.innerHTML = `<span>${(Math.random() * 150 - 50).toFixed(2)}%</span>`;
+      }
+      box.style.left = `${random(0, window.innerWidth - boxSize)}px`;
+      box.style.top = `${random(0, window.innerHeight - boxSize)}px`;
+      document.body.appendChild(box);
+      toggleAnimation(box);
+    }
+
+    // 3초마다 새로운 작은 박스 생성
+    setInterval(() => {
+      createNewBox();
+
+      // 게임 종료 조건 확인
+      const largeBoxes = document.querySelectorAll('.large-box');
+      if (largeBoxes.length === 1) {
+        document.querySelectorAll('.box').forEach(box => {
+          toggleAnimation(box);
+        });
+        const winner = largeBoxes[0].textContent;
+        const winnerDiv = document.getElementById('winner');
+        winnerDiv.textContent = `Winner ${winner}`;
+        winnerDiv.style.display = 'block';
+        clearInterval(spawnIntervalId);
+      }
+    }, spawnInterval);
+
+    const spawnIntervalId = setInterval(createNewBox, spawnInterval);
+  </script>
+</body>
+</html>

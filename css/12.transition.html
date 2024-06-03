@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transition</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        margin: 20px;
+        background-color: pink;
+        /* transition: background-color 500ms linear;
+        transition: border-radius 500ms linear;
+        transition: transform 500ms linear; */
+        transition: all 1000ms linear ;
+        
+      }
+      .box1:hover {
+        background-color: rgb(24, 1, 24);
+      }
+      .box2:hover {
+        border-radius: 100%;
+        background-color: cornflowerblue;
+        /* transition: all 1s ease-in-out; */
+        transition-delay: 1250ms;
+      }
+      .box3:hover {
+        border-radius: 99%;
+        transform: translateX(2000px);
+        /* transform: translateY(1000px);
+        transform: translateZ(1000px); */
+        background-color: skyblue;
+        transition-delay: 550ms;
+
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box box1"></div>
+    <div class="box box2"></div>
+    <div class="box box3"></div>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generate Random Boxes</title>
+    <style>
+      /* 스타일 정의 */
+      #boxContainer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .box {
+        height: 50px;
+        width: 50px;
+        margin: 10px;
+        border-radius: 50px;
+        transition: all 500ms ease-in-out;
+        display: flex;
+        font-weight: bold;
+        justify-content: center;
+        align-items: center;
+        color: rgb(145, 15, 15);
+        
+      }
+      .highlight:hover {
+        border-radius: 10px;
+        border: 1px solid cornflowerblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="boxContainer"></div>
+    <div>클릭 횟수: <span id="clickCount">0</span></div>
+
+    <script>
+      // 랜덤컬러 함수
+      function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
+      // 박스생성 및 추가 함수
+      let count = 0;
+      function generateBoxes(numBoxes) {
+        const container = document.getElementById('boxContainer');
+
+        for (let i = 0; i < numBoxes; i++) {
+          const box = document.createElement('div');
+          box.classList.add('box');
+
+          box.style.backgroundColor = getRandomColor();
+          box.addEventListener('click', () => {
+            box.classList.toggle('highlight');
+            count++;
+            console.log(`Box, ${count}_times was clicked!`);
+            box.innerHTML = count;
+            document.getElementById('clickCount').textContent = count;
+          });
+          container.appendChild(box);
+        }
+      }
+      generateBoxes(6);
+    </script>
+  </body>
+</html>

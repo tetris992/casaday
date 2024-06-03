@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toggle Animation</title>
+    <style>
+      .box {
+        height: 150px;
+        width: 150px;
+        margin: 20px;
+        background-color: brown;
+      }
+      /* .box1 {
+        background-color: red;
+      }
+      .box2 {
+        background-color: steelblue;
+      }
+      .box3 {
+        background-color: blueviolet;
+      }
+      .box4 {
+        background-color: chartreuse;
+      }
+      .box5 {
+        background-color: slategrey;
+      } */
+      .animate {
+        animation: animateBox5 10s linear 0.5s infinite alternate backwards;
+      }
+      @keyframes animateBox5 {
+        0% {
+          border-radius: 80px;
+          border: 1px solid slateblue;
+          transform: translateX(0px) rotate(180deg) scaleY(0.2);
+        }
+        50% {
+          border-radius: 90px;
+          border: 10px solid crimson;
+          transform: translateX(2200px) rotate(0deg) scaleX(0.2);
+        }
+        100% {
+          border-radius: 100px;
+          border: 1px solid goldenrod;
+          transform: translateX(0px) rotate(-140deg) scaleX(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="boxContainer">
+      <!-- <div class="box box1"></div>
+        <div class="box box2"></div>
+        <div class="box box3"></div>
+        <div class="box box4"></div>
+        <div class="box box5"></div> -->
+    </div>
+
+    <script>
+      //렌덤 색상함수
+      function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
+
+      //토글애니메이션 함수 toggleAnimation() DOM을 조작하는 함수는 event.target
+      function toggleAnimation(event) {
+        event.target.classList.add('animate');
+        event.target.style.backgroundColor = getRandomColor();
+        setTimeout(() => {
+          event.target.classList.remove('animate');
+        }, 21000);
+      }
+
+      //박스생성함수 Array.from({length: num}).forEach(()=>{})
+      function createBox(num) {
+        const container = document.getElementById('boxContainer');
+        Array.from({ length: num }).forEach(() => {
+          const box = document.createElement('div');
+          box.classList.add('box');
+          container.appendChild(box);
+          box.style.backgroundColor = getRandomColor();
+          box.addEventListener('click', toggleAnimation);
+        });
+      }
+
+      // DOMContentLoaded 이후 박스생성함수 실행
+      document.addEventListener('DOMContentLoaded', () => {
+        createBox(7);
+      });
+
+      //   // for of 사용
+      //   function createBox(num) {
+      //     const container = document.getElementById('boxContainer');
+      //     const nums = Array.from({ length: num });
+      //     for (const _ of nums) {
+      //       const box = document.createElement('div');
+      //       box.classList.add('box');
+      //       box.style.backgroundColor = getRandomColor();
+      //       box.addEventListener('click', toggleAnimation);
+      //       container.appendChild(box);
+      //     }
+      //   }
+
+      //   // Array.from + forEach 사용
+      //   function createBox(num) {
+      //     const container = document.getElementById('boxContainer');
+      //     Array.from({ length: num }).forEach(() => {
+      //       const box = document.createElement('div');
+      //       box.classList.add('box');
+      //       box.style.backgroundColor = getRandomColor();
+      //       box.addEventListener('click', toggleAnimation);
+      //       container.appendChild(box);
+      //     });
+      //   }
+
+      // // DOMContentLoaded 이후 박스생성함수 실행
+      //   document.addEventListener('DOMContentLoaded', () => {
+      //     createBox(10);
+      //   });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,580 @@
+/** Globla*/
+
+:root {
+  /* App Colors */
+  --color-primary: var(--color-black);
+  --color-primary-variant: var(--color-gray);
+  --color-accent: var(--color-blue);
+  --color-accent-variant: var(--color-orange);
+  --color-text: var(--color-white);
+
+  --color-white: #ffffff;
+  --color-black: #050a13;
+  --color-blue: #03e8f9;
+  --color-orange: #fd6413;
+  --color-gray: #101€26;
+}
+
+/** Globla*/
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Google Sans', sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+a {
+  text-decoration: var(--color-text);
+}
+button {
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+}
+button:focus {
+  outline: 1px solid var(--color-accent);
+}
+
+/* Common */
+.section {
+  padding: 4rem;
+  text-align: center;
+}
+.max_container {
+  max-width: 2500px;
+  margin: auto;
+}
+.title {
+  font-size: 2.5rem;
+  margin: 1rem 0.5rem;
+}
+.description {
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+/* header */
+.header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: transparent;
+  z-index: 1;
+  transition: background 0.3s ease-in-out;
+}
+
+.scrolled {
+  background-color: var(--color-primary);
+  /* 
+  background: url('/portfolio-head/images/bg2.jpg') no-repeat center center;
+  background-size: cover; 배경 이미지를 전체 영역에 맞게 조정 */
+  opacity: 1;
+}
+
+.header_logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.header_logo_img {
+  height: 36px;
+  width: 36px;
+  margin: 0 1rem;
+}
+.header_logo_title {
+  font-size: 1.8rem;
+}
+
+.header_menu {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  font-size: 1.2rem;
+}
+
+.header_menu_item {
+  color: var(--color-accent-variant);
+  padding: 8px 16px;
+}
+.header_menu_item:hover {
+  border-bottom: 1px solid var(--color-accent);
+}
+.header_menu_item.active {
+  border: 1px solid var(--color-accent);
+  background-color: rgb(84, 115, 158);
+  border-radius: 4px;
+  color: whitesmoke;
+}
+
+/* HOME */
+#home {
+  background: url('/portfolio-head/images/bg2.jpg') no-repeat center center;
+  background-size: cover; /* 배경 이미지를 전체 영역에 맞게 조정 */
+  transition: background 0.3s ease-in-out;
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  padding: 5rem 1rem;
+  padding-top: 7rem;
+  text-align: center;
+}
+
+section {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+  padding: 5rem 1rem;
+  /* height: 50vh; 섹션 높이를 화면 크기로 설정 */
+}
+
+.home_avatar {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 3px solid var(--color-orange);
+  /* border-radius: 100%; */
+}
+.home_title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+.home_title_strong {
+  color: rgb(106, 165, 168);
+}
+.home_description {
+  font-size: 1.5rem;
+}
+.home_contact {
+  display: inline-block;
+  background-color: cornflowerblue;
+  color: var(--color-black);
+  margin: 1rem;
+  padding: 0.5rem 1rem;
+  font-weight: blod;
+  border-radius: 5px;
+}
+.home_contact:hover {
+  background-color: transparent;
+  outline: 2px solid var(--color-accent);
+  color: var(--color-text);
+}
+
+/* ABOUT */
+#about {
+  background-color: beige;
+}
+.majors {
+  display: flex;
+  justify-content: space-around;
+  gap: 3rem;
+  margin: 2.5rem 0;
+}
+.major {
+  flex: 1;
+  background-color: var(--color-black);
+  margin: 2rem;
+  padding: 1rem 1rem;
+  color: var(--color-white);
+  border-radius: 1rem;
+  cursor: default;
+  transition: all 300ms ease-in-out;
+
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 1px 1px 5px 0px rgba(30, 174, 35, 0.75);
+  -moz-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+}
+.major:hover {
+  scale: 1.05;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(2, 28, 3, 0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+.major_icon {
+  transition: all 300ms ease-in-out;
+  font-size: 4rem;
+  margin: 1rem 0;
+  color: var(--color-orange);
+}
+.major_icon:hover {
+  rotate: 10deg;
+  scale: 1.1;
+  filter: contrast(200%);
+}
+.major_title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.jobs {
+  text-align: start;
+}
+.job {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+.job_name {
+  color: var(--color-primary-variant);
+  margin: 0;
+}
+.job_period {
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+/* Where is */
+
+#location {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(188, 203, 215, 0.581);
+  color: var(--color-black);
+  box-sizing: border-box;
+}
+.address {
+  text-align: left;
+}
+.address iframe {
+  width: 100%;
+  height: 500px; /* 지도 크기를 크게 설정 */
+  border: 1px solid slategrey;
+  border-radius: 1%;
+  box-shadow: 5px 5px 2px 0px rgba(55, 4, 4, 0.75);
+  -webkit-box-shadow: 5px 5px 2px 0px rgba(117, 163, 118, 0.75);
+  -moz-box-shadow: 5px 5px 2px 0px rgba(193, 157, 157, 0.75);
+}
+.icon-color {
+  color: rgb(59, 13, 13);
+  margin-right: 0.5rem;
+}
+
+.categories {
+  display: flex;
+  justify-content: center;
+  margin: 2.2rem;
+  gap: 1em;
+  color: white;
+}
+.category {
+  position: relative;
+  flex: 1;
+  font-size: 1.1rem;
+  padding: 0.5rem 2.5rem;
+  border: 1px solid var(--color-accent);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.category--selected {
+  background-color: var(--color-accent);
+  color: steelblue;
+}
+.category_count {
+  position: absolute;
+  top: -20px;
+  right: 16px;
+  width: 28px;
+  line-height: 28px;
+  height: 28px;
+  background-color: chartreuse;
+  color: black;
+  border-radius: 50%;
+  opacity: 0;
+  top: -20px;
+  right: 5px;
+  transition: all 300ms ease-in-out;
+}
+
+.category--selected .category_count,
+.category:hover .category_count {
+  opacity: 1;
+  top: 0;
+  right: 5px;
+}
+
+/* Rooms Type Works */
+#work {
+  background-color: rgb(159, 175, 190);
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.project {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.project_img-wrapper {
+  width: 100%;
+  height: 0;
+  padding-bottom: 75%; /* 4:3 aspect ratio */
+  position: relative;
+}
+
+.project_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.project_metadata {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  transition: opacity 0.3s ease-in-out;
+  width: 80%;
+}
+
+.project:hover .project_img {
+  opacity: 0.3;
+}
+
+.project:hover .project_metadata {
+  opacity: 1;
+}
+
+.project_title {
+  color: white;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.project_title::after {
+  content: '';
+  display: block;
+  width: 50%;
+  height: 3px;
+  background-color: rgb(25, 213, 213);
+  margin: 0.5rem auto; /* 가운데 정렬 */
+}
+
+.project_description {
+  color: #fd6413;
+  font-size: 1rem;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal_content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 100%;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Testimonials */
+#testimonials {
+  background-color: beige;
+}
+.testimonials {
+  margin: 1rem;
+  padding: 2rem;
+  box-shadow: 1px 1px 5px 0px rgba(200, 146, 146, 0.75);
+  -webkit-box-shadow: 1px 1px 5px 0px rgba(5, 5, 5, 0.75);
+  -moz-box-shadow: 1px 1px 5px 0px rgba(249, 231, 231, 0.75);
+}
+.testimonial {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.testimonial:nth-child(even) .testimonial_img {
+  order: 1;
+}
+.testimonial_img {
+  width: 150px;
+  height: 150px;
+  border-radius: 10%;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(2, 28, 3, 0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+.testimonial_bubble {
+  padding: 1rem;
+}
+
+/* Arrow up */
+.arrow_up {
+  background-color: rgb(7, 102, 7);
+  position: fixed;
+  bottom: 8rem;
+  right: 1rem;
+  font-size: 3rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 100%;
+  text-align: center;
+  opacity: 0.5;
+  line-height: 4rem;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 3px 3px 1px 0px rgba(2, 28, 3, 0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+/* Footer */
+#contact {
+  height: 40px;
+  width: 100%;
+  background: url('/portfolio-head/images/bg1.jpg') no-repeat center;
+  color: white;
+  opacity: 0.7;
+  /* filter:contrast(10deg); */
+  filter: grayscale(0.3);
+  padding-top: 2rem;
+}
+
+.contact {
+  width: 100%;
+  margin: auto;
+  margin-top: 0;
+  border-bottom: 1px solid tomato;
+  background-color: rgba(89, 87, 87, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  padding-bottom: 1rem;
+  font-size: 2rem;
+  opacity: 1;
+  filter: invert();
+}
+.contact_li,
+i {
+  color: rgba(235, 227, 225, 0.991);
+  filter: grayscale(0.1) brightness(520%);
+}
+
+.contact_li:hover,
+i:hover {
+  color: rgba(225, 235, 226, 0.991);
+  filter: grayscale(1) brightness(20%);
+}
+
+@media screen and (max-width: 786px) {
+  .section {
+    padding: 3rem 2rem;
+  }
+  .title {
+    font-size: 1rem;
+    margin: 0.5rem;
+  }
+  .description {
+    font-size: 1rem;
+  }
+  .header {
+    flex-direction: column;
+  }
+  .header_logo_title {
+    font-size: 1rem;
+  }
+  .header_menu {
+    gap: 0.5px;
+    font-size: 1rem;
+  }
+
+  #home {
+    padding-bottom: 3rem;
+  }
+  .home_title {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  .majors {
+    flex-direction: column;
+    margin: 1rem;
+  }
+  .major {
+    flex: 0;
+    margin: 0.1rem;
+  }
+  .job {
+    margin-left: 3rem;
+  }
+
+  .skills {
+    grid-template-columns: 1fr;
+  }
+  .categories {
+    flex-direction: column;
+  }
+  .category {
+    width: 100%;
+  }
+  .projects {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .arrow_up {
+    background-color: var(--color-orange);
+    position: fixed;
+    bottom: 6rem;
+    right: 0.5rem;
+    font-size: 2rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 100%;
+    text-align: center;
+    opacity: 0.6;
+    line-height: 3rem;
+  }
+}
