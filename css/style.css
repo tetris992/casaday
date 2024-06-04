@@ -177,7 +177,7 @@ button:focus {
 }
 
 #home {
-  background: url('/images/bg2.jpg') no-repeat center center;
+  background: url('../images/bg2.jpg') no-repeat center center;
   background-size: cover;
   transition: background 0.3s ease-in-out;
   background-color: var(--color-primary);
@@ -531,7 +531,7 @@ section {
 #contact {
   height: 40px;
   width: 100%;
-  background: url('/images/bg1.jpg') no-repeat center;
+  background: url('../images/bg1.jpg') no-repeat center;
   color: white;
   opacity: 0.7;
   filter: grayscale(0.3);
