@@ -88,6 +88,7 @@ button:focus {
 .section {
   padding: 4rem;
   text-align: center;
+  border: 0;
 }
 
 .max_container {
@@ -177,6 +178,8 @@ button:focus {
 }
 
 #home {
+  position: relative;
+
   background: url('../images/bg2.jpg') no-repeat center center;
   background-size: cover;
   transition: background 0.3s ease-in-out;
@@ -279,81 +282,6 @@ section {
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 1rem;
-}
-
-#location {
-  background-color: rgba(190, 181, 159, 0.661);
-  color: var(--color-black);
-  box-sizing: border-box;
-}
-
-.address {
-  text-align: left;
-  cursor: pointer;
-}
-
-.nav:hover {
-  text-align: left;
-  font-weight: bold;
-}
-
-.address iframe {
-  width: 100%;
-  height: 500px; /* 지도 크기를 크게 설정 */
-  border: 1px solid slategrey;
-  border-radius: 1%;
-  box-shadow: 5px 5px 2px 0px rgba(55, 4, 4, 0.75);
-  -webkit-box-shadow: 5px 5px 2px 0px rgba(117, 163, 118, 0.75);
-  -moz-box-shadow: 5px 5px 2px 0px rgba(193, 157, 157, 0.75);
-}
-
-.icon-color {
-  color: rgb(59, 13, 13);
-  margin-right: 0.5rem;
-}
-
-.categories {
-  display: flex;
-  justify-content: center;
-  margin: 2.2rem;
-  gap: 1em;
-  color: white;
-}
-
-.category {
-  position: relative;
-  flex: 1;
-  font-size: 1.1rem;
-  padding: 0.5rem 2.5rem;
-  border: 1px solid var(--color-accent);
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-.category--selected {
-  background-color: var(--color-accent);
-  color: steelblue;
-}
-
-.category_count {
-  position: absolute;
-  top: -20px;
-  right: 16px;
-  width: 28px;
-  line-height: 28px;
-  height: 28px;
-  background-color: chartreuse;
-  color: black;
-  border-radius: 50%;
-  opacity: 0;
-  transition: all 300ms ease-in-out;
-}
-
-.category--selected .category_count,
-.category:hover .category_count {
-  opacity: 1;
-  top: 0;
-  right: 5px;
 }
 
 #rooms {
@@ -474,6 +402,101 @@ section {
   cursor: pointer;
 }
 
+#location {
+  background-color: rgba(190, 181, 159, 0.661);
+  color: var(--color-black);
+  box-sizing: border-box;
+}
+
+.address {
+  text-align: left;
+  cursor: pointer;
+}
+
+.nav:hover {
+  text-align: left;
+  font-weight: bold;
+}
+
+.address iframe {
+  width: 100%;
+  height: 500px; /* 지도 크기를 크게 설정 */
+  border: 1px solid slategrey;
+  border-radius: 1%;
+  box-shadow: 5px 5px 2px 0px rgba(55, 4, 4, 0.75);
+  -webkit-box-shadow: 5px 5px 2px 0px rgba(117, 163, 118, 0.75);
+  -moz-box-shadow: 5px 5px 2px 0px rgba(193, 157, 157, 0.75);
+}
+
+.icon-color {
+  color: rgb(59, 13, 13);
+  margin-right: 0.5rem;
+}
+
+.categories {
+  display: flex;
+  justify-content: center;
+  margin: 2.2rem;
+  gap: 1em;
+  color: white;
+}
+
+.category {
+  position: relative;
+  flex: 1;
+  font-size: 1.1rem;
+  padding: 0.5rem 2.5rem;
+  border: 1px solid var(--color-accent);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.category--selected {
+  background-color: var(--color-accent);
+  color: steelblue;
+}
+
+.category_count {
+  position: absolute;
+  top: -20px;
+  right: 16px;
+  width: 28px;
+  line-height: 28px;
+  height: 28px;
+  background-color: chartreuse;
+  color: black;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 300ms ease-in-out;
+}
+
+.category--selected .category_count,
+.category:hover .category_count {
+  opacity: 1;
+  top: 0;
+  right: 5px;
+}
+.custom-shape-divider-bottom-1717491180 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1717491180 svg {
+  position: relative;
+  display: block;
+  width: calc(175% + 1.3px);
+  height: 173px;
+}
+
+.custom-shape-divider-bottom-1717491180 .shape-fill {
+  fill: #FFFFFF;
+}
+
 #guest {
   background-color: beige;
 }
@@ -529,6 +552,8 @@ section {
 }
 
 #contact {
+  position: relative;
+
   height: 40px;
   width: 100%;
   background: url('../images/bg1.jpg') no-repeat center;
@@ -565,6 +590,7 @@ section {
   color: rgba(225, 235, 226, 0.991);
   filter: grayscale(1) brightness(20%);
 }
+
 
 @media screen and (max-width: 786px) {
   .section {
