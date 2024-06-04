@@ -1,92 +1,88 @@
-// 아래 코드를 함수로 리펙토링함
-function handleScroll() {
-  const header = document.querySelector('.header');
-  const headerRect = header.getBoundingClientRect();
-  const headerHeight = headerRect.height;
+// // // IntersectionObserver
 
-  if (window.scrollY > headerHeight) {
-    header.classList.add('scrolled');
-  } else if (window.scrollY <= headerHeight) {
-    header.classList.remove('scrolled');
+const options = {
+  root: null,
+  rootMargin: '-10px 0px 0px 0px',
+  threshold: [0, 0.8],
+};
+
+// 섹션의 id들을 배열로 가져오기
+// const sectionIds = ['home', 'about', 'rooms', 'location', 'guest', 'contact'];
+const sections = Array.from(document.querySelectorAll('.section'));
+const menuItems = document.querySelectorAll('.header_menu_item');
+
+const observer = new IntersectionObserver(callback, options);
+sections.forEach((section) => observer.observe(section));
+
+function callback(entries) {
+  let firstIntersectingEntry = null;
+
+  entries.forEach((entry) => {
+    if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
+      if (
+        !firstIntersectingEntry ||
+        entry.boundingClientRect.top <
+          firstIntersectingEntry.boundingClientRect.top
+      ) {
+        firstIntersectingEntry = entry;
+      }
+    }
+  });
+
+  if (firstIntersectingEntry) {
+    const id = firstIntersectingEntry.target.getAttribute('id');
+    const menuItem = document.querySelector(`.header_menu_item[href="#${id}"]`);
+    if (menuItem) {
+      menuItems.forEach((item) => item.classList.remove('active'));
+      menuItem.classList.add('active');
+    }
   }
 }
 
-// Function to toggle menu
-function toggleMenu() {
-  const headerMenu = document.querySelector('.header_menu');
-  const navContainer = document.querySelector('.nav_container');
-  const toggleBar = document.querySelector('.toggle_bar');
-
-  toggleBar.addEventListener('click', () => {
-    navContainer.classList.toggle('active');
-    headerMenu.classList.toggle('open');
-  });
-
-  headerMenu.addEventListener('click', function () {
-    headerMenu.classList.remove('open');
-  });
-
-  // Close menu when clicking outside
-  document.addEventListener('click', function (event) {
-    if (
-      !toggleBar.contains(event.target) &&
-      navContainer.classList.contains('active')
-    ) {
-      navContainer.classList.remove('active');
-    }
-  });
-}
-
-// Initialize all functions
-function init() {
-  document.addEventListener('scroll', handleScroll);
-  toggleMenu();
-}
-
-// Call the init function on DOMContentLoaded
-document.addEventListener('DOMContentLoaded', init);
 
 
-// 리펙토링 이전버전
+//   // Function to update menu item based on scroll position
+//   const updateMenuOnScroll = () => {
+//     const sections = Array.from(document.querySelectorAll('.section'));
+//     const menuItems = document.querySelectorAll('.header_menu_item');
 
-// JavaScript to change the header background color on scroll
-// document.addEventListener('scroll', () => {
-//   const header = document.querySelector('.header');
-//   const headerRect = header.getBoundingClientRect();
-//   const headerHeight = headerRect.height;
-//   // console.log(headerHeight);
-//   if (window.scrollY > headerHeight) {
-//     header.classList.add('scrolled');
-//   } else if (window.scrollY <= headerHeight) {
-//     header.classList.remove('scrolled');
-//   }
-// });
+//     window.addEventListener('scroll', () => {
+//       let visibleSections = [];
 
-// const headerMenu = document.querySelector('.header_menu');
-// const toggleBar = document.querySelector('.toggle_bar');
-// toggleBar.addEventListener('click', () => {
-//   headerMenu.classList.add('open');
-// });
+//       const viewportCenter = window.innerHeight / 2;
 
-// const navContainer = document.querySelector('.nav_container');
-// toggleBar.addEventListener('click', function () {
-//   navContainer.classList.toggle('active');
-// });
+//       sections.forEach(section => {
+//         const rect = section.getBoundingClientRect();
+//         if (rect.top < window.innerHeight && rect.bottom > 0) {
+//           visibleSections.push(section);
+//         }
+//       });
 
-// headerMenu.addEventListener('click', function () {
-//   headerMenu.classList.remove('open');
-// });
+//       if (visibleSections.length > 0) {
+//         let targetSection;
+//         if (visibleSections.length >= 3) {
+//           targetSection = visibleSections[Math.floor(visibleSections.length / 2)];
+//         } else {
+//           let closestDistance = Infinity;
+//           visibleSections.forEach(section => {
+//             const rect = section.getBoundingClientRect();
+//             const sectionCenter = rect.top + rect.height / 2;
+//             const distance = Math.abs(viewportCenter - sectionCenter);
+//             if (distance < closestDistance) {
+//               closestDistance = distance;
+//               targetSection = section;
+//             }
+//           });
+//         }
 
-// // 바깥 영역 클릭 시 메뉴 닫기
-// document.addEventListener('click', function (event) {
-//   const navContainer = document.querySelector('.nav_container');
-//   const toggleBar = document.querySelector('.toggle_bar');
+//         const id = targetSection.getAttribute('id');
+//         const menuItem = document.querySelector(`.header_menu_item[href="#${id}"]`);
+//         if (menuItem) {
+//           menuItems.forEach(item => item.classList.remove('active'));
+//           menuItem.classList.add('active');
+//         }
+//       }
+//     });
+//   };
 
-//   // 이벤트 대상이 토글 버튼이거나 토글 버튼의 자식이 아닐 때, nav_container가 열려 있으면 닫기
-//   if (
-//     !toggleBar.contains(event.target) &&
-//     navContainer.classList.contains('active')
-//   ) {
-//     navContainer.classList.remove('active');
-//   }
-// });
+// updateMenuOnScroll();

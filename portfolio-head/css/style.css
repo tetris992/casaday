@@ -15,6 +15,10 @@
 * {
   box-sizing: border-box;
 }
+/* JS코드는 복잡함: 부드러운 스크롤은 css로 간단히 해결가능 */
+html { 
+  scroll-behavior: smooth;
+}
 
 body {
   font-family: 'Google Sans', sans-serif;
@@ -116,7 +120,7 @@ button:focus {
   transition: background 0.3s ease-in-out;
 }
 
-.scrolled {
+.headerBlackedByscrolled {
   background-color: var(--color-primary);
   opacity: 1;
 }
@@ -226,6 +230,7 @@ section {
 
 #about {
   background-color: beige;
+  padding: 6rem;
 }
 
 .majors {
@@ -353,6 +358,7 @@ section {
 
 #rooms {
   background-color: rgb(159, 175, 190);
+  padding: 6rem;
 }
 
 .projects {
@@ -383,6 +389,7 @@ section {
   top: 0;
   left: 0;
   transition: opacity 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 .project_metadata {
@@ -397,6 +404,7 @@ section {
   padding: 1rem;
   transition: opacity 0.3s ease-in-out;
   width: 80%;
+  cursor: pointer;
 }
 
 .project:hover .project_img {
@@ -427,6 +435,44 @@ section {
   font-size: 1rem;
 }
 
+/* 모달 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9);
+  cursor: pointer;
+}
+
+.modal_content {
+  margin: auto;
+  display: block;
+  width: 90%;
+  max-width: 100%;
+  cursor: pointer;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
 
 #guest {
   background-color: beige;
@@ -485,7 +531,7 @@ section {
 #contact {
   height: 40px;
   width: 100%;
-  background: url('/portfolio-head/images/bg1.jpg') no-repeat center;
+  background: url('/frontEnd/portfolio-head/images/bg1.jpg') no-repeat center;
   color: white;
   opacity: 0.7;
   filter: grayscale(0.3);
@@ -566,9 +612,10 @@ section {
     color: white;
     display: block;
     position: absolute;
-    right: 2rem;
-    top: 1.3rem;
+    right: 1.5rem;
+    top: 1.5rem;
     font-size: 1.5rem;
+    z-index: 1600;
   }
 
   .toggle_bar:hover {
@@ -598,13 +645,6 @@ section {
 
   .nav_container.active + .toggle_bar {
     display: none;
-  }
-
-  .toggle_bar {
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
-    z-index: 1600;
   }
 
   .header {
