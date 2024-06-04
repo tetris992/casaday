@@ -3,9 +3,9 @@
 document.addEventListener('scroll', () => {
   const home = document.querySelector('.home_container');
   const homeHeight = home.offsetHeight;
-  //   console.log(homeHeight);
+    // console.log(homeHeight);
   home.style.opacity = 1 - window.scrollY / homeHeight;
-  // console.log(1 - window.scrollY / homeHeight);
+  console.log(1 - window.scrollY / homeHeight);
 });
 
 // arrow up 투명도
