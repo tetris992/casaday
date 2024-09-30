@@ -260,7 +260,7 @@ section {
 
 .major:hover {
   transform: scale(1.05);
-  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 5px 0px rgba(213, 10, 10, 0.75);
   -webkit-box-shadow: 10px 10px 5px 0px rgba(2, 28, 3, 0.75);
   -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 }
@@ -507,31 +507,6 @@ section {
   box-shadow: 1px 1px 5px 0px rgba(200, 146, 146, 0.75);
   -webkit-box-shadow: 1px 1px 5px 0px rgba(5, 5, 5, 0.75);
   -moz-box-shadow: 1px 1px 5px 0px rgba(249, 231, 231, 0.75);
-}
-
-.testimonial {
-  display: flex;
-  justify-content: space-between;
-  gap: 2rem;
-  align-items: center;
-  margin-bottom: 2rem;
-}
-
-.testimonial:nth-child(even) .testimonial_img {
-  order: 1;
-}
-
-.testimonial_img {
-  width: 150px;
-  height: 150px;
-  border-radius: 10%;
-  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: 10px 10px 5px 0px rgba(2, 28, 3, 0.75);
-  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-}
-
-.testimonial_bubble {
-  padding: 1rem;
 }
 
 .arrow_up {
