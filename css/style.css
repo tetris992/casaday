@@ -140,7 +140,7 @@ button:focus {
 
 .header_logo_title {
   font-size: 1.8rem;
-  color: var(--color-primary);
+  color: rgb(237, 113, 36);
 }
 
 .header_logo_title a {
