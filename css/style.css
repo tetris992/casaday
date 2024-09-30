@@ -144,7 +144,7 @@ button:focus {
 }
 
 .header_logo_title a {
-  color: rgb(2, 170, 226);
+  color: rgb(237, 113, 36);
 }
 
 .header_menu {
@@ -260,7 +260,7 @@ section {
 
 .major:hover {
   transform: scale(1.05);
-  box-shadow: 10px 10px 5px 0px rgba(213, 10, 10, 0.75);
+  box-shadow: 10px 10px 5px 0px rgba(237, 16, 16, 0.75);
   -webkit-box-shadow: 10px 10px 5px 0px rgba(2, 28, 3, 0.75);
   -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 }
