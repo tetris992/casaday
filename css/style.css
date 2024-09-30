@@ -494,7 +494,7 @@ section {
 }
 
 .custom-shape-divider-bottom-1717491180 .shape-fill {
-  fill: #FFFFFF;
+  fill: #ffffff;
 }
 
 #guest {
@@ -591,6 +591,50 @@ section {
   filter: grayscale(1) brightness(20%);
 }
 
+/* Breakfast Section */
+.breakfast-section {
+  background-color: #f9f9f9;
+  padding: 4rem 1rem;
+}
+
+.breakfast_gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 2fr));
+  grid-auto-rows: 200px;
+  gap: 10px;
+  margin-top: 2rem;
+}
+
+.breakfast_item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px; /* 모서리 둥글게 */
+}
+
+.breakfast_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 이미지 비율 유지 */
+  object-position: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.breakfast_img:hover {
+  transform: scale(1.05); /* 호버 시 확대 */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 10px; /* 호버 시에도 모서리 유지 */
+}
+
+/* 하단 설명 글씨 희미하게 */
+.description-subtle {
+  font-size: 10px;
+  color: rgba(0, 0, 0, 0.6); /* 희미한 텍스트 */
+  transition: color 0.3s ease;
+}
+
+.description-subtle:hover {
+  color: rgba(0, 0, 0, 0.85); /* 호버 시 더 진하게 */
+}
 
 @media screen and (max-width: 786px) {
   .section {
@@ -763,5 +807,14 @@ section {
     overflow: hidden;
     line-height: 0;
     transform: rotate(180deg);
+  }
+
+  /* 반응형 디자인을 위한 미디어 쿼리 */
+
+  @media (max-width: 768px) {
+    .breakfast_gallery {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      grid-auto-rows: 150px;
+    }
   }
 }
