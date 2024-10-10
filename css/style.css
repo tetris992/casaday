@@ -15,6 +15,7 @@
 * {
   box-sizing: border-box;
 }
+
 /* JS코드는 복잡함: 부드러운 스크롤은 css로 간단히 해결가능 */
 html {
   scroll-behavior: smooth;
@@ -48,6 +49,13 @@ button {
 
 button:focus {
   outline: 1px solid transparent;
+}
+
+/* 추가된 부분: h1, h2에 폰트 적용 */
+h1,
+h2,
+.title {
+  font-family: 'Playfair Display', serif;
 }
 
 .services {
@@ -100,6 +108,7 @@ button:focus {
   font-size: 2.5rem;
   margin: 1rem 0.5rem;
   color: var(--color-primary);
+  /* 폰트 적용은 이미 h1, h2에서 지정했으므로 필요 없음 */
 }
 
 .description {
@@ -141,6 +150,8 @@ button:focus {
 .header_logo_title {
   font-size: 1.8rem;
   color: rgb(237, 113, 36);
+  /* 추가된 부분: 폰트 적용 */
+  font-family: 'Playfair Display', serif;
 }
 
 .header_logo_title a {
@@ -205,6 +216,8 @@ section {
 .home_title {
   font-size: 3rem;
   margin-bottom: 1rem;
+  /* 추가된 부분: 폰트 적용 */
+  font-family: 'Playfair Display', serif;
 }
 
 .home_title_strong {
@@ -282,6 +295,8 @@ section {
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 1rem;
+  /* 추가된 부분: 폰트 적용 */
+  font-family: 'Playfair Display', serif;
 }
 
 #rooms {
@@ -347,6 +362,8 @@ section {
   color: white;
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
+  /* 추가된 부분: 폰트 적용 */
+  font-family: 'Playfair Display', serif;
 }
 
 .project_title::after {
@@ -510,16 +527,16 @@ section {
 }
 
 .arrow_up {
-  background-color: rgb(7, 102, 7);
+  background-color: rgb(106, 249, 106);
   position: fixed;
   bottom: 8rem;
   right: 1rem;
-  font-size: 3rem;
-  width: 4rem;
-  height: 4rem;
+  font-size: 1rem;
+  width: 2rem;
+  height: 2rem;
   border-radius: 100%;
   text-align: center;
-  line-height: 4rem;
+  line-height: 2rem;
   transition: opacity 1900ms ease-in-out;
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 3px 3px 1px 0px rgba(2, 28, 3, 0.75);
@@ -718,11 +735,6 @@ section {
 
   #home {
     padding-bottom: 3rem;
-  }
-
-  .home_title {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
   }
 
   .header_logo_title a {
